@@ -26,7 +26,8 @@ const allowedOrigins = [
     .map((url) => url.trim())
     .filter(Boolean),
 ];
-
+console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
+console.log("ALLOWED ORIGINS:", allowedOrigins);
 // CORS configuration
 app.use(
   cors({
