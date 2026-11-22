@@ -1,5 +1,6 @@
 
 import express from "express";
+import helmet from "helmet";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -17,6 +18,9 @@ import {
 dotenv.config();
 
 const app = express();
+
+// Security HTTP headers
+app.use(helmet());
 
 // Allowed frontend origins
 const allowedOrigins = [
