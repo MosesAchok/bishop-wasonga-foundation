@@ -18,15 +18,26 @@ dotenv.config();
 
 const app = express();
 
+// Allowed frontend origins
+const allowedOrigins = [
+  "http://localhost:5173",
+  ...(process.env.FRONTEND_URL || "")
+    .split(",")
+    .map((url) => url.trim())
+    .filter(Boolean),
+];
+
+// CORS configuration
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: allowedOrigins,
   })
 );
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// API health check
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,

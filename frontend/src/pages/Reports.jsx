@@ -12,7 +12,7 @@ import {
   Loader2,
 } from "lucide-react";
 
-const API_URL = "http://localhost:5000/api/reports";
+const API_URL = `${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/reports`;
 
 export default function Reports() {
   const [reports, setReports] = useState([]);
